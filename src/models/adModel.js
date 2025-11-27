@@ -59,4 +59,24 @@ const Ad = sequelize.define(
   }
 );
 
+Ad.belongsTo(User, {
+  foreignKey: "user_id",
+  as: "users",
+});
+
+User.hasMany(Ad, {
+  foreignKey: "user_id",
+  as: "ads",
+});
+
+Ad.belongsTo(Category, {
+  foreignKey: "category_id",
+  as: "categories",
+});
+
+Category.hasMany(Ad, {
+  foreignKey: "category_id",
+  as: "ads",
+});
+
 export default Ad;
